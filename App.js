@@ -6,14 +6,9 @@ import {Provider} from './src/context/BlogContext';
 import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
 import { AntDesign } from '@expo/vector-icons'; 
-import { useNavigation } from '@react-navigation/native';
-
 
 const Stack = createStackNavigator();
 function MyStack() {
-  // const navigation = useNavigation();
-  // navigation.removeListener
-  
   return (
     <Stack.Navigator>
       <Stack.Screen
