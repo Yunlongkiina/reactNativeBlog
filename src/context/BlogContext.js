@@ -9,15 +9,25 @@ const blogReducer =(state, action)=>{
             return [...state,
                 {
                     id: Math.floor(Math.random()*99999),
-                    title:`Blog title # ${state.length+1}`} ]
+                    title: action.payload.title,
+                    content: action.payload.content
+                }];
         case 'delete_blogpost':
-            return state.filter(blogPost=>blogPost.id !== action.payload)
+            return state.filter(blogPost=>blogPost.id !== action.payload);
         default:
             state
     }
 }
-const addBlogPost = dispatch =>{return ()=>{
-    dispatch({type: 'Add_post'})
+const addBlogPost = dispatch =>{return (title, content, callback)=>{
+    // return async (title, content)=>{
+    // try{
+    //     await axios.post('postapi', title, content)
+    //     dispatch({type: 'Add_post', payload:{title, content}})
+    //     useCallback()
+    // }catch(e){}
+
+    dispatch({type: 'Add_post', payload:{title, content}});
+    callback();
 }}
 
 const deleteBlogPost =dispatch=>{

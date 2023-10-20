@@ -18,7 +18,7 @@ function MyStack() {
           title: 'Blogs',
           headerRight: () => (           
             <TouchableOpacity onPress={()=> navigation.navigate('Create')}>
-              <AntDesign name="plus" size={24} color="black" />
+              <AntDesign name="plus" size={24} color="black" style={styles.addIconStyle}/>
             </TouchableOpacity>
           ),
         })}
@@ -35,6 +35,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  addIconStyle:{
+    paddingRight:20
+}
 });
 
 export default function App() {

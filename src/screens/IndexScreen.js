@@ -6,15 +6,13 @@ import { useNavigation } from '@react-navigation/native';
 
 const IndexScreen=()=>{
     const {state, addBlogPost, deleteBlogPost} = useContext(Context);
+    // const testcontext = useContext(Context);
+    // console.log(testcontext);
     const navigation = useNavigation();
     navigation.removeListener
 
     return(
         <View>
-            <Button
-                title="Add Post"
-                onPress={()=>addBlogPost()}
-            />
             <FlatList 
                 data={state}
                 keyExtractor={(blogPost)=>blogPost.id}
@@ -26,7 +24,11 @@ const IndexScreen=()=>{
                             <View style={styles.listContainer}>
                                 <Text style={styles.titleStyle}>{item.title}---{item.id}</Text>
                                 <TouchableOpacity onPress={()=>deleteBlogPost(item.id)}>
-                                    <AntDesign name="delete" size={24} color="black" />
+                                    <AntDesign 
+                                        name="delete"
+                                        size={24}
+                                        color="black"                                        
+                                        />
                                 </TouchableOpacity>
                             </View>
                         </TouchableOpacity>
@@ -49,9 +51,6 @@ const styles = StyleSheet.create({
     titleStyle:{
         fontSize:18
     },
-    deleteIconStyle:{
-        
-    }
 });
 
 export default IndexScreen;
