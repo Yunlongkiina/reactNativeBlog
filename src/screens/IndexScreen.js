@@ -13,7 +13,7 @@ const IndexScreen=()=>{
 
     return(
         <View>
-            <FlatList 
+            <FlatList
                 data={state}
                 keyExtractor={(blogPost)=>blogPost.id}
                 renderItem={({item})=>{

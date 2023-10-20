@@ -2,38 +2,16 @@ import React,{useState, useContext} from "react";
 import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import { Context } from "../context/BlogContext";
 import { useNavigation } from '@react-navigation/native';
+import BlogPostForm from "../components/BlogPostForm";
 
 const CreateScreen=()=>{
-    const [title, setTitle] = useState('');
-    const [content, setContent] = useState('');
     const {addBlogPost} = useContext(Context);
     const navigation = useNavigation();
     navigation.removeListener
 
-    return(
-        <View>
-            <Text style={styles.lableStyle}> Enter Title: </Text>
-            <TextInput
-                value={title}
-                onChangeText={text=>setTitle(text)}
-                style={styles.inputStyle}
-                />
-            <Text style={styles.lableStyle}> Enter Content: </Text>
-            <TextInput
-                value={content}
-                onChangeText={text=>setContent(text)}
-                style={styles.inputStyle}
-                />
-            <Button
-                title="Add New Blog Post"
-                onPress={()=>{
-                    addBlogPost(title, content,()=>{
-                        navigation.navigate('Index')
-                    })
-                }}
-            />
-        </View>
-    )
+    return <BlogPostForm onSubmit={(title,content)=>{
+        addBlogPost(title,content,()=>navigation.navigate('Index'))
+    }}/>
 }
 
 const styles = StyleSheet.create({

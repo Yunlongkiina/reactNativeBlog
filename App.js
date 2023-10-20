@@ -6,7 +6,9 @@ import {Provider} from './src/context/BlogContext';
 import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
 import { AntDesign } from '@expo/vector-icons'; 
-
+import { Entypo } from '@expo/vector-icons'; 
+import EditScreen
+ from './src/screens/EditScreen';
 const Stack = createStackNavigator();
 function MyStack() {
   return (
@@ -23,8 +25,26 @@ function MyStack() {
           ),
         })}
         />
-      <Stack.Screen name="Show" component={ShowScreen} />
+      <Stack.Screen
+        name="Show"
+        component={ShowScreen}
+        options={({ navigation,route: { params } }) => ({
+          title: 'Blog List',
+          headerRight: () => (           
+            <TouchableOpacity onPress={()=> navigation.navigate('Edit', {id: params.id})}>
+              <Entypo
+                name="edit"
+                size={24}
+                color="black"
+                style={styles.editIconStyle}
+                />
+            </TouchableOpacity>
+          ),
+        })}
+
+        />
       <Stack.Screen name="Create" component={CreateScreen} />
+      <Stack.Screen name="Edit" component={EditScreen} />
     </Stack.Navigator>
   );
 }
@@ -37,7 +57,10 @@ const styles = StyleSheet.create({
   },
   addIconStyle:{
     paddingRight:20
-}
+  },
+  editIconStyle:{
+    paddingRight:20
+  }
 });
 
 export default function App() {
