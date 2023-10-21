@@ -5,7 +5,7 @@ import BlogPostForm from '../components/BlogPostForm';
 import { useNavigation } from '@react-navigation/native';
 
 const EditScreen =({ route: { params } })=>{
-    const {state} = useContext(Context)
+    const {state, editBlogPost} = useContext(Context)
     const {id} = params
     const blogPost = state.find(item=>item.id === id)
     const navigation = useNavigation();
@@ -17,7 +17,8 @@ const EditScreen =({ route: { params } })=>{
     return <BlogPostForm
             initValues={{title: blogPost.title,content:blogPost.content}}
             onSubmit={(title,content)=>{
-                addBlogPost(title,content,()=>navigation.navigate('Index'))
+                editBlogPost(id,title,content,()=>navigation.navigate('Index'))
+                // addBlogPost(title,content,()=>navigation.navigate('Index'))
             }}
         />
 }
