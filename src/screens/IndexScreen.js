@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, FlatList, Button, TouchableOpacity} from 'react-
 import {Context} from "../context/BlogContext";
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';
+import axios from "axios";
 
 const IndexScreen=()=>{
     const {state, addBlogPost, deleteBlogPost} = useContext(Context);
@@ -35,6 +36,10 @@ const IndexScreen=()=>{
                     )
                 }}
             />
+            <Button title="Test API" onPress={()=>{
+                axios.post('http://localhost:8069/api/v15/test')
+                .then(response => console.log(response));
+            }} />
         </View>
     )
 }

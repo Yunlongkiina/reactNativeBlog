@@ -7,9 +7,9 @@ import ShowScreen from './src/screens/ShowScreen';
 import CreateScreen from './src/screens/CreateScreen';
 import { AntDesign } from '@expo/vector-icons'; 
 import { Entypo } from '@expo/vector-icons'; 
-import EditScreen
- from './src/screens/EditScreen';
+import EditScreen from './src/screens/EditScreen';
 const Stack = createStackNavigator();
+
 function MyStack() {
   return (
     <Stack.Navigator>
